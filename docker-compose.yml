@@ -1,0 +1,140 @@
+version: '3'
+
+services:
+  auth-service1:
+    build:
+      context: ./services/auth-service
+    container_name: auth-service1
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./services/auth-service:/app
+      - /app/node_modules
+    restart: unless-stopped
+    environment:
+      - PORT=4000
+      - JWT_SECRET=supersecret
+      - MONGO_URL=mongodb://mongo:27017/auth1
+    networks:
+      - micro_net
+    depends_on:
+      - mongo
+      - rabbitmq
+
+  auth-service2:
+    build:
+      context: ./services/auth-service
+    container_name: auth-service2
+    ports:
+      - "4001:4000"
+    volumes:
+      - ./services/auth-service:/app
+      - /app/node_modules
+    restart: unless-stopped
+    environment:
+      - PORT=4001
+      - JWT_SECRET=supersecret
+      - MONGO_URL=mongodb://mongo:27017/auth2
+    networks:
+      - micro_net
+    depends_on:
+      - mongo
+      - rabbitmq
+
+  data-service1:
+    build:
+      context: ./services/data-service
+    container_name: data-service1
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./services/data-service:/app
+      - /app/node_modules
+    restart: unless-stopped
+    environment:
+      - PORT=5000
+      - JWT_SECRET=supersecret
+      - MONGO_URL=mongodb://mongo:27017/data1
+      - RABBITMQ_URL=amqp://rabbitmq
+    networks:
+      - micro_net
+    depends_on:
+      - mongo
+      - rabbitmq
+      - redis
+
+  data-service2:
+    build:
+      context: ./services/data-service
+    container_name: data-service2
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./services/data-service:/app
+      - /app/node_modules
+    restart: unless-stopped
+    environment:
+      - PORT=5001
+      - JWT_SECRET=supersecret
+      - MONGO_URL=mongodb://mongo:27017/data2
+      - RABBITMQ_URL=amqp://rabbitmq
+    networks:
+      - micro_net
+    depends_on:
+      - mongo
+      - rabbitmq
+      - redis
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - micro_net
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - micro_net
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - micro_net
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    restart: unless-stopped
+    networks:
+      - micro_net
+    depends_on:
+      - auth-service1
+      - auth-service2
+      - data-service1
+      - data-service2
+  concurrency-install:
+    image: node:18
+    container_name: concurrency-installer
+    working_dir: /app
+    volumes:
+      - ./concurrency-test:/app
+    command: npm install
+
+networks:
+  micro_net:

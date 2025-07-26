@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "191c73e2-4979-40b5-983e-c4781ad57a0c",
+		"name": "Ms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@mail.com\",\n    \"password\": \"1234\"\n}"
+				},
+				"url": "http://localhost:4000/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@mail.com\",\n    \"password\": \"1234\"\n}"
+				},
+				"url": "http://localhost:4000/login"
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"John Doe\", \"email\":\"john@example.com\"}"
+				},
+				"url": "http://localhost:5000/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "get-profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg0ODdmZjNiYjAyNTI4OTAwYTI1MDIiLCJlbWFpbCI6InRlczIyMzNAbWFpbC5jb20iLCJpYXQiOjE3NTM1MTYwMzYsImV4cCI6MTc1MzUxOTYzNn0.lhb9B49QrS8SFxjH9o0-wdTgcWani29ooDxE_ChTD-I"
+					}
+				],
+				"url": "http://localhost:5001/profiles"
+			},
+			"response": []
+		},
+		{
+			"name": "metrics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg0ODdmZjNiYjAyNTI4OTAwYTI1MDIiLCJlbWFpbCI6InRlczIyMzNAbWFpbC5jb20iLCJpYXQiOjE3NTM1MTYwMzYsImV4cCI6MTc1MzUxOTYzNn0.lhb9B49QrS8SFxjH9o0-wdTgcWani29ooDxE_ChTD-I"
+					}
+				],
+				"url": "http://localhost:5001/profiles"
+			},
+			"response": []
+		}
+	]
+}
