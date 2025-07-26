@@ -76,4 +76,4 @@ run
 
 node load_simulator.js
 
-The Postman API collection has been added inside the postman/ directory for easy access and testing.
+Postman API collection has been added inside the postman/ directory for easy access and testing.
