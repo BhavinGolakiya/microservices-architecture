@@ -17,7 +17,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"test@mail.com\",\n    \"password\": \"1234\"\n}"
+					"raw": "{\n    \"email\": \"bhavin4@mail.com\",\n    \"password\": \"1234\"\n}"
 				},
 				"url": "http://localhost:4000/signup"
 			},
@@ -35,7 +35,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"test@mail.com\",\n    \"password\": \"1234\"\n}"
+					"raw": "{\n    \"email\": \"bhavin4@mail.com\",\n    \"password\": \"1234\"\n}"
 				},
 				"url": "http://localhost:4000/login"
 			},
@@ -44,20 +44,33 @@
 		{
 			"name": "profile",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg1MDllMmY5NTJkZDIxMDQzMjQyNGIiLCJlbWFpbCI6ImJoYXZpbjRAbWFpbC5jb20iLCJpYXQiOjE3NTM1NDkzMDEsImV4cCI6MTc1MzU1MjkwMX0.Aal2wO8zMerf4pOp9euQQmy7ATZgTuwvhXwOpEqX0Tg"
+					}
+				},
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer <JWT_TOKEN>"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg0N2FjNzMzMDBhYzhiYjQ0YzUwZGUiLCJlbWFpbCI6InRlc3QxMTJAbWFpbC5jb20iLCJpYXQiOjE3NTM1MTI2NTEsImV4cCI6MTc1MzUxNjI1MX0.K-GU0aklufrPqmdJodeOwbACmk5Xyz4_r2pZpYh3jx8",
+						"disabled": true
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json"
+						"value": "application/json",
+						"disabled": true
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"John Doe\", \"email\":\"john@example.com\"}"
+					"raw": "{\n    \"name\": \"bhavin2\",\n    \"age\": \"43\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": "http://localhost:5000/profile"
 			},
@@ -66,6 +79,12 @@
 		{
 			"name": "get-profile",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg0ZDYzMGMxOGYwMTM2YWY5MTA2ZDkiLCJlbWFpbCI6InRlc3R1c2VyOTkyQG1haWwuY29tIiwiaWF0IjoxNzUzNTM2MjE4LCJleHAiOjE3NTM1Mzk4MTh9.Og5VF9MhoA8l8nJjpTsGKiEk3NJCNuJEHBr0BD8srkw"
+					}
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -73,7 +92,7 @@
 						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg0ODdmZjNiYjAyNTI4OTAwYTI1MDIiLCJlbWFpbCI6InRlczIyMzNAbWFpbC5jb20iLCJpYXQiOjE3NTM1MTYwMzYsImV4cCI6MTc1MzUxOTYzNn0.lhb9B49QrS8SFxjH9o0-wdTgcWani29ooDxE_ChTD-I"
 					}
 				],
-				"url": "http://localhost:5001/profiles"
+				"url": "http://localhost:5000/profiles"
 			},
 			"response": []
 		},
@@ -87,7 +106,7 @@
 						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg0ODdmZjNiYjAyNTI4OTAwYTI1MDIiLCJlbWFpbCI6InRlczIyMzNAbWFpbC5jb20iLCJpYXQiOjE3NTM1MTYwMzYsImV4cCI6MTc1MzUxOTYzNn0.lhb9B49QrS8SFxjH9o0-wdTgcWani29ooDxE_ChTD-I"
 					}
 				],
-				"url": "http://localhost:5001/profiles"
+				"url": "http://localhost:4000/metrics"
 			},
 			"response": []
 		}

@@ -20,7 +20,7 @@ const io = socketIo(server, {
 
 // middleware
 app.use(express.json());
-app.use(rateLimit({ windowMs: 60 * 1000, max: 100 }));
+app.use(rateLimit({ windowMs: 60 * 1000, max: 2 }));
 
 // mongoDB Connection
 mongoose.connect(process.env.MONGO_URL, {
@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGO_URL, {
   .catch(err => console.error('mongoDB connection error:', err))
 
 // routes
-app.use('/api/profile', profileRoutes);
+app.use('/', profileRoutes);
 
 // Health Check
 app.get('/health', (req, res) => {
