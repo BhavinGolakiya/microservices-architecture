@@ -13,15 +13,14 @@ This project is a full-fledged microservices system using:
 ## Folder Structure
 
 microservices-architecture/
-│
-├── services/
-│ ├── auth-service/ # Handles authentication & profile
-│ └── data-service/ # Consumes user events and stores profile
-│
-├── concurrency-test/ # Load simulator with HTTP + WebSocket
-├── nginx/ # Reverse proxy configuration
-├── docker-compose.yml # Main orchestration file
-└── README.md # Setup instructions
+
+    services/
+        auth-service/ # Handles authentication & profile
+        data-service/ # Consumes user events and stores profile
+    concurrency-test/ # Load simulator with HTTP + WebSocket
+    nginx/ # Reverse proxy configuration
+    docker-compose.yml # Main orchestration file
+    README.md # Setup instructions
 
 ---
 
@@ -63,7 +62,7 @@ MONGO_URL=mongodb://mongo:27017/data
 RABBITMQ_URL=amqp://rabbitmq
 
 
-git clone https://github.com/your-username/microservices-architecture.git
+git clone https://github.com/BhavinGolakiya/microservices-architecture.git
 
 cd microservices-architecture
 
