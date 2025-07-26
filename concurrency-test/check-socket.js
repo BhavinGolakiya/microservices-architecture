@@ -1,4 +1,4 @@
-const { io } = require('socket.io-client');
+const { io } = require('socket.io-client')
 
 const socket = io('http://localhost:5000', {
   path: '/socket',
@@ -7,13 +7,13 @@ const socket = io('http://localhost:5000', {
 
 
 socket.on('connect', () => {
-  console.log('connected to server with id:', socket.id);
+  console.log('connected to server with id:', socket.id)
 });
 
 socket.on('connect_error', (err) => {
-  console.error('onnection error:', err.message);
+  console.error('onnection error:', err.message)
 });
 
 socket.on('welcome', (data) => {
-  console.log('server message:', data);
+  console.log('server message:', data)
 });

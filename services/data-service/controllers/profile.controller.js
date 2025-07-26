@@ -1,4 +1,4 @@
-const Profile = require('../models/profile.models');
+const Profile = require('../models/profile.models')
 
 exports.createProfile = async (req, res) => {
   const { name, age } = req.body;
@@ -11,8 +11,8 @@ exports.createProfile = async (req, res) => {
 };
 
 exports.getProfiles = async (req, res) => {
-  const profiles = await Profile.find({});
-  res.json(profiles);
+  const profiles = await Profile.find({})
+  res.json(profiles)
 };
 
-exports.health = (req, res) => res.status(200).send('Data service healthy');
+exports.health = (req, res) => res.status(200).send('Data service healthy')
